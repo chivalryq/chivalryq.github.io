@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>vim on Hugo Winston</title><link>https://example.com/tags/vim/</link><description>Recent content in vim on Hugo Winston</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 26 Jan 2021 22:49:00 +0000</lastBuildDate><atom:link href="https://example.com/tags/vim/index.xml" rel="self" type="application/rss+xml"/><item><title>从例子聊聊vim的替换指令</title><link>https://example.com/posts/vim-substitude/</link><pubDate>Tue, 26 Jan 2021 22:49:00 +0000</pubDate><guid>https://example.com/posts/vim-substitude/</guid><description>这两日实习期间，要做三个X功能下的子功能，在X功能下已经有F1~Fn，n个子功能，其中间相似度很高，所以新添加三个子功能的工作基本是复制粘贴，但是每个功能有其若干关键词不同。实现这三个功能由我和一位带我的同事共同完成，但是由于vim的替换功能之给力，让我倒是提前完成了我的部分，跟leader说后，他又分配了我一部分，我还是提前半小时左右完成工作摸鱼等下班了。
+例如原来已有功能的是XXX，我们要添加的新功能关键词是YYY，那么我们要把其中一个函数从：UpdateXXXFoo改名为UpdateYYYFoo。
+涉及的改动大概有如下这两种：
+涉及整个文件内的改动，例如从XXXFence.go复制出来一个YYYFence.go，这里面的函数、注释、字符串（例如写入日志的）都还是以XXX命名的 涉及在原有文件上增加一部分，例如给新功能注册路由。 那么涉及这两种的替换时，vim的替换如何发挥作用呢？
+首先我们来看vim的替换的基本用法：
+:s/foo/bar/g 这个命令把这一行遇到的所有foo替换为bar，如果没有，就什么都不做
+:s （冒号是命令的一部分）表示替换命令，是substitute的缩写，然后用斜杠提示替换前的单词foo，再一个斜杠提示替换后的单词bar，再一个斜杠表示替换标志g
+这个g表示替换这一行的所有foo，如果你指向替换第一个，可以用:s/foo/bar，不过就vim的效率思路，你应该直接用c指令去替换（扯远了）
+能不能给力点啊？ 来到前面这个问题，如果全局里的XXX要替换为YYY怎么办呢？答案是：
+:%s/foo/bar/g 比上一个命令多的一个百分号，表示在整个文件进行替换
+按照第一种改动，整个文件里的XXX都要改为YYY，可以直接这么操作。
+%是怎么起作用的呢？其实他等价于1,$，也就是从第一行到最后一行生效这个命令（$是最后一行的一个符号），换句话说，上一个命令可以写作
+:1,$s/foo/bar/g 其实每个人一看到这种命令就有种自然的恐惧感，啊这又是什么，怎么就$都出来了，如果知道下面这个问题，其实1,$也没有那么可怕
+:2,5&amp;lt;命令&amp;gt; 表示的就是这个命令从第二行到第五行生效，这种x,y表示从第x行到第y行执行接下来的命令是vim命令的一个常用操作
+顺便：.表示的是当前行
+能不能再给力一点啊？ 其实在上面这些，大多数现代IDE都有好用的替换功能，例如IDEA的快捷键是Ctrl+R，全局替换对话框是Ctrl+Shift+R，但是至今我都没有找到，如何选中一个区域进行替换，而这时vim依然有这种操作。
+区域替换，先来个例子，原来一个文件里就是用来定义枚举量的，文件内容像这样：
+... RequestXXXOperationA:=1 RequestXXXOperationB:=2 RequestXXXOperationC:=3 ... 你添加了一个新功能，也要添加对应的枚举量，于是你先复制了一份XXX关键字的枚举量：
+... RequestXXXOperationA:=1 RequestXXXOperationB:=2 RequestXXXOperationC:=3 RequestXXXOperationA:=1 RequestXXXOperationB:=2 RequestXXXOperationC:=3 ... 现在你不能用全局替换（显然的），如果用IDE替换，免不了先放对光标位置，再输入两个字符串，再点击三下replace这一顿操作
+更有效率的方式是什么呢？先用
+Vjj （行可视模式选择，光标在第二个RequestXXXOperationA这一行）当然怎么选中是无所谓的，如果你刚粘贴完，光标在RequestXXXOperationC这一行，Vkk选中他们
+这时再按:,你会发现命令里不只出现了冒号，他们是这样的：
+:&amp;#39;&amp;lt;,&amp;#39;&amp;gt; 这是由vim自动补全的，这里的'&amp;lt;和'&amp;gt;共同表示选中的区域（你也能猜到这表示了选中的区域的左右边界），他们和你刚刚看到的2,5表示的没有什么区别，都是限制了接下来命令的范围
+你再接着敲完这个命令：
+:&amp;#39;&amp;lt;,&amp;#39;&amp;gt;s/foo/bar/g 这样你就能选中刚才刚复制的部分进行替换了，不会影响到文件的其他部分。
+能不能再给力一点啊？ 其实再说就不是替换命令的部分了，vim的命令存在缓冲区（或者历史记录）
+如果你输入冒号，再按上下键，就能找到你曾经输入过的命令
+这么一来，如果你要复制三个文件并进行替换，并且其中混杂着蛇形命名法和驼峰命名法的关键字，如XxxYyy要替换为AaaBbb，而在另一个部分则是xxx_yyy替换为aaa_bbb，那么重复输入不同的替换词，一遍遍的点击replace将是接下来至少半小时的噩梦。
+如果你在命令历史记录找到了合适的命令，不妨直接改一改用于这一次替换，或者你刻意把这个命令写成可以复用的模式就不用改了。
+好好利用历史记录将极大加快你的替换进度。</description></item></channel></rss>
