@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Journeyman</title><link>https://example.com/posts/</link><description>Recent content in Blog on Journeyman</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>从例子聊聊vim的替换指令</title><link>https://example.com/posts/vim-substitude/</link><pubDate>Tue, 26 Jan 2021 22:49:00 +0000</pubDate><guid>https://example.com/posts/vim-substitude/</guid><description>这两日实习期间，要做三个X功能下的子功能，在X功能下已经有F1~Fn，n个子功能，其中间相似度很高，所以新添加三个子功能的工作基本是复制粘贴，但是每个功能有其若干关键词不同。实现这三个功能由我和一位带我的同事共同完成，但是由于vim的替换功能之给力，让我倒是提前完成了我的部分，跟leader说后，他又分配了我一部分，我还是提前半小时左右完成工作摸鱼等下班了。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Journeyman's Blog</title><link>https://example.com/posts/</link><description>Recent content in Blog on Journeyman's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>我的2021</title><link>https://example.com/posts/my2021/</link><pubDate>Thu, 03 Feb 2022 20:12:02 +0800</pubDate><guid>https://example.com/posts/my2021/</guid><description>我算是最晚写年终总结的人吧？也许本来我也没想起来写，是因为我觉得过年在老家有些无聊。 就像2020年我也没有总结，应该是因为当时还有挺多事情的，这个年过的就稍微有点闲了。
+起因 从年初来说，应该是刚刚忙完大三上一系列课程，肝的或者不肝的，水的或者不水的，然后寒假前夕看到一篇文章。我印象里是复旦大学生存指南，也许不是（但是这仍是一部非常有意义的小册子，推荐给所有大学生看，&amp;ldquo;四年时间是我们最宝贵也最沉重的投资，你想好怎么使用了吗？&amp;ldquo;的金句振聋发聩。）我决心探索一番：我究竟适合什么样的生活？或者说认真考虑随大流读研是我想要的吗？
+所以我决定找一份实习，看看工作怎样。
+阳光 找实习的过程并不尽如人意，前后面了字节三次，也许觉得我不符合预期，也许觉得我水平不行，给我挂了。最后我找了个学校旁边的阳光出行，离公寓非常近。
+在阳光实习的组长是一个看起来挺年轻的大哥，也许是为了照顾实习生，他坚持让我用两周来学习Go，熟悉语言用完整的两周，其实我第一周就觉得自己能使用这门语言了。本来在学校里就是一门课新学一门语言，最后还要交作业，用全职的两周太奢侈了。后面一周我就边摸鱼边看技术花边新闻（指类似阮一峰博客里的周刊之类的东西）。后面我就在做一个内部平台的维护，BTW，前端也是我用 Vue 一起维护（因为人手不够，前端的人手似乎总是不够的，这也许和我们目前在舆论里对前端的劝退有关，但是这些岗位又是那么重要）
+中间我发现有一些代码犯了 &amp;ldquo;Repeat Yourself&amp;rdquo; 的问题，显然之前有的开发者为了进度做了先拷贝再小修改的问题。并且我也遇到到因为进度原因，没有人愿意重构这个地方的经典状况。直到我离职，那个代码依旧是那个样子。 一共做了两个月，把学习的两周和春节算上，应该也就一个月多点，我就离职了。
+中间有一个特别经典的事情，组长开会说我们这个组工作时长并不长啊，上面可能会怎么怎么看我们组&amp;hellip;实际上原因是五个人里准点下班的有三个（笑），平均下来时长就不高了。并且提议我们6点后在公司做一些其他事情。因为当时我已经过了阿里云的三面了，第二天提了离职。（组长也许觉得是因为说了那些事情才导致我离职的，其实不是，虽然这种不好的风气我也不喜欢，并且我当时完成自己的任务很容易，自然也很准时）
+武汉，以及春天 开学的第一周是线上教学，然而我先和李老师去了一趟武汉，虽然武汉一直在常见的阴雨天气里，但是因为停留的四五天非常短暂，所以它自然留给旅人一种美妙的回忆。在武汉约在武大的老朋友一起逛校园，赏樱花。于磨山的林间小路骑车寻找艺术馆，在山的那边湖的那边和李老师做小型摩天轮。
+在武汉的某一个早上接到了杭州打来的 HR 面电话，这意味着开学我就可以去那边实习啦。
+因为想要兼顾学校和实习，所以我搬家到了一个中间点，并在这里度过了春天和夏天。
+云原生？云原生是什么？ 直到7月之前，我的大部分精力都在实习上（也许排第二的是通勤，笑）。在阿里云云原生某小组实习的第一个任务挺有挑战的，不过也没那么挑战。说到底别人看出了任务的必要性，收集了实现路径上的一些方法，明确了关键节点的可行性，最后交给我来完成。不过我入职后的三周都扑在这个上面了。
+此时，课业是第二位的，我上了每周五的课。周末做作业，并且感谢小组成员们带我飞，团队有一些工作甚至没给我安排。
+在公司的实习是蛮有意思的。设计和实现都要做，也许实习生做前一部分少一些，但是也是有的。我觉得遗憾的地方是，没有从头完成一个独立的事情（也许&amp;quot;从头&amp;quot;也比较模糊，且罢），所以毕设是一个很好的机会。
+磕磕碰碰中，在真实场景里遇到了代码质量这样熟悉又陌生的名词。以前总是读，但是很少想，也很少实践，但是这些功能之外的东西，在实习里碰到了更多。
+夏天快要过去了，我回忆起来的场景总是：刚刚结束期末考试的7月份，去和李老师散步的时候遇到的云彩。
+阅读，阅读，还有网上冲浪 秋天回到了学校旁边的公寓，我也只是有时候去公司。我买了一些书，并且开始喜欢红楼梦和水浒传。不知不觉中冬天便来了。我参与了 cuetorial.com 的翻译，在后面阅读 Linus 自传 Just For Fun 的时候，才意识到这是一种与千里之外的人合作创造的乐趣。
+2021 我做出了自己选择，有意思的事情但愿我都记录下来了。</description></item><item><title>《程序员修炼之道——从小工到专家》书摘</title><link>https://example.com/posts/master/</link><pubDate>Sun, 30 Jan 2022 00:22:03 +0800</pubDate><guid>https://example.com/posts/master/</guid><description>本书的英文名是 The Pragmatic Programmer: From Journeyman to Master 也就是大约两年前我开始写第一篇博客的时候， 作为博客名称的 Journeyman。意思是勤奋但不杰出的运动员（或者别的什么）。（有意思的是英语总是把一个很复杂的意思组合到一个词里，扯远了）这个词其实就是我，哈哈，动机是好的，但是有时候也不勤奋。
+第二遍看《程序员修炼之道&amp;ndash;从小工到专家》的时候，我又感觉到之前很多事情的道理已经有所阐明，感慨虽然时代略有不同，但职业图景并无太大变化。
+石头汤：如何引领众人把一件事做成？石头汤就是这样一个故事，有时候你需要的就是务必亲自充当团队的催化剂。完成启动杂役（start fatigue），这件事令我有体会的地方在于，前两日我发现有人在带头翻译cuetorials.com，我想到如果有更多人因此去学习CUE，就更利于我们事业的发展。因为我们的工作是部分基于CUE的，而这是一门并不大众化的配置语言。所以我也兴致勃然地参与了部分翻译工作。当又一次看到这个故事的时候，我才意识到我就是故事里跟风的村民，不是说村民的工作没有意义，只是如果能总是“充当团队的催化剂”，主动完成启动杂役，我们就总能掌握主动，推动更多人完成工作。
+作为一篇读书笔记，未完。</description></item><item><title>从例子聊聊vim的替换指令</title><link>https://example.com/posts/vim-substitude/</link><pubDate>Tue, 26 Jan 2021 22:49:00 +0000</pubDate><guid>https://example.com/posts/vim-substitude/</guid><description>这两日实习期间，要做三个X功能下的子功能，在X功能下已经有F1~Fn，n个子功能，其中间相似度很高，所以新添加三个子功能的工作基本是复制粘贴，但是每个功能有其若干关键词不同。实现这三个功能由我和一位带我的同事共同完成，但是由于vim的替换功能之给力，让我倒是提前完成了我的部分，跟leader说后，他又分配了我一部分，我还是提前半小时左右完成工作摸鱼等下班了。
 例如原来已有功能的是XXX，我们要添加的新功能关键词是YYY，那么我们要把其中一个函数从：UpdateXXXFoo改名为UpdateYYYFoo。
 涉及的改动大概有如下这两种：
 涉及整个文件内的改动，例如从XXXFence.go复制出来一个YYYFence.go，这里面的函数、注释、字符串（例如写入日志的）都还是以XXX命名的 涉及在原有文件上增加一部分，例如给新功能注册路由。 那么涉及这两种的替换时，vim的替换如何发挥作用呢？
