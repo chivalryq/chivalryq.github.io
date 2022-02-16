@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>What I cannot create, I do not understand on Journeyman's Blog</title><link>https://example.com/</link><description>Recent content in What I cannot create, I do not understand on Journeyman's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Thu, 03 Feb 2022 20:12:02 +0800</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml"/><item><title>我的2021</title><link>https://example.com/posts/my2021/</link><pubDate>Thu, 03 Feb 2022 20:12:02 +0800</pubDate><guid>https://example.com/posts/my2021/</guid><description>我算是最晚写年终总结的人吧？也许本来我也没想起来写，是因为我觉得过年在老家有些无聊。 就像2020年我也没有总结，应该是因为当时还有挺多事情的，这个年过的就稍微有点闲了。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>What I cannot create, I do not understand on Journeyman's Blog</title><link>https://example.com/</link><description>Recent content in What I cannot create, I do not understand on Journeyman's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Tue, 15 Feb 2022 22:01:32 +0800</lastBuildDate><atom:link href="https://example.com/index.xml" rel="self" type="application/rss+xml"/><item><title>Neovim: 从VimScript迁移到Lua</title><link>https://example.com/posts/migrate_to_lua/</link><pubDate>Tue, 15 Feb 2022 22:01:32 +0800</pubDate><guid>https://example.com/posts/migrate_to_lua/</guid><description>在迁移到neovim之后，我更喜欢模块化更好的Lua作为nvim的配置语言。虽然vimL我还没完全理解，例如函数（因为他奇怪的标志符和语法，还有我的懒）OK这虽然并不重要，但是在neovim势头正劲的情况下，生态的差距似乎正在拉开。我觉得及早转到neovim可能会更好融入这种生态。因为Lua是neovim生态的一等公民。
+如何完整的迁移我仍在学习当中，但是这不妨碍我利用我已经学到的几点，在不牺牲我当前配置使用的情况下，我要把配置逐步取代为Lua。vim是个养成游戏，哎，就得这么玩。
+所以这会是一个四不像的配置）
+入门 &amp;ndash; 迁移Options 没必要上来就把Lua怎么用看一遍，学过Python，会使用其他语言，直到什么叫脚本语言，完全可以随用随查。
+我们先把options转换为Lua，相信Options也是当初学习配置Vim的第一步。 首先把创建一个init.lua。在里面对照你原来的Options写配置：
+类似set xxx=yyy的配置，会被转换为vim.o.xxx
+set expandtab=false将会被转换为
+vim.bo.expandtab=false 注意，这里可能是以下三种之一，具体取决于你的Option是什么
+vim.o.xxx（全局Option) vim.wo.xxx（window Option) vim.bo.xxx（Buffer Option) 如何得知呢？键入:help xxx 去看一下，这是一个例子
+大多数Options都提到这个是什么类型，有的没有提到不过也不必慌，一会你source init.lua的时候，有错误他会提示你的。
+值得注意的是，这里有一个小问题，数字，布尔这种类型可以直接转换过去，如果是类似encoding=UTF-8这种选项，记得把UTF-8加引号，like
+vim.o.encoding=&amp;#39;UTF-8&amp;#39; 做到这里也许已经挺累了，记得使用宏帮助完成这些重复工作
+更深一步 &amp;ndash; mapping mapping更容易迁移，这是一个简单的例子，vim.api.nvim_set_keymap 是一个neovim暴露的接口，由于函数是Lua里的一等公民，可以引入到一个变量中后面使用。参数分别是：
+模式 映射前的键 映射后的键 选项 其中选项我几乎总是设置noremap，silent也可以设置，为了简单起见我们先使用同一种选项。 local keymap = vim.api.nvim_set_keymap local opts ={noremap= true,silent=true} keymap(&amp;#39;n&amp;#39;,&amp;#39;H&amp;#39; ,&amp;#39;^&amp;#39;,opts) keymap(&amp;#39;n&amp;#39;,&amp;#39;L&amp;#39;, &amp;#39;$&amp;#39;,opts) BTW这里也可以使用宏来帮助快速完成这些迁移。
+使用packer.nvim来管理插件（可选） 老实说，这是我更改的，或者今晚刚刚采用的插件，Vim-plug很好，资历很老而且几乎没有什么问题，Pakcer相对来说是个新家伙，只不过他可以提供插件懒加载，这对以后是有好处的。
+这部分完全选做。
+-- 这部分帮助你在自动下载所需的packers.nvim文件 local fn = vim.fn local install_path = fn.stdpath(&amp;#39;data&amp;#39;)..&amp;#39;/site/pack/packer/start/packer.nvim&amp;#39; if fn.empty(fn.glob(install_path)) &amp;gt; 0 then packer_bootstrap = fn.</description></item><item><title>我的2021</title><link>https://example.com/posts/my2021/</link><pubDate>Thu, 03 Feb 2022 20:12:02 +0800</pubDate><guid>https://example.com/posts/my2021/</guid><description>我算是最晚写年终总结的人吧？也许本来我也没想起来写，是因为我觉得过年在老家有些无聊。 就像2020年我也没有总结，应该是因为当时还有挺多事情的，这个年过的就稍微有点闲了。
 起因 从年初来说，应该是刚刚忙完大三上一系列课程，肝的或者不肝的，水的或者不水的，然后寒假前夕看到一篇文章。我印象里是复旦大学生存指南，也许不是（但是这仍是一部非常有意义的小册子，推荐给所有大学生看，&amp;ldquo;四年时间是我们最宝贵也最沉重的投资，你想好怎么使用了吗？&amp;ldquo;的金句振聋发聩。）我决心探索一番：我究竟适合什么样的生活？或者说认真考虑随大流读研是我想要的吗？
 所以我决定找一份实习，看看工作怎样。
 阳光 找实习的过程并不尽如人意，前后面了字节三次，也许觉得我不符合预期，也许觉得我水平不行，给我挂了。最后我找了个学校旁边的阳光出行，离公寓非常近。
@@ -17,6 +33,7 @@
 2021 我做出了自己选择，有意思的事情但愿我都记录下来了。</description></item><item><title>《程序员修炼之道——从小工到专家》书摘</title><link>https://example.com/posts/master/</link><pubDate>Sun, 30 Jan 2022 00:22:03 +0800</pubDate><guid>https://example.com/posts/master/</guid><description>本书的英文名是 The Pragmatic Programmer: From Journeyman to Master 也就是大约两年前我开始写第一篇博客的时候， 作为博客名称的 Journeyman。意思是勤奋但不杰出的运动员（或者别的什么）。（有意思的是英语总是把一个很复杂的意思组合到一个词里，扯远了）这个词其实就是我，哈哈，动机是好的，但是有时候也不勤奋。
 第二遍看《程序员修炼之道&amp;ndash;从小工到专家》的时候，我又感觉到之前很多事情的道理已经有所阐明，感慨虽然时代略有不同，但职业图景并无太大变化。
 石头汤：如何引领众人把一件事做成？石头汤就是这样一个故事，有时候你需要的就是务必亲自充当团队的催化剂。完成启动杂役（start fatigue），这件事令我有体会的地方在于，前两日我发现有人在带头翻译cuetorials.com，我想到如果有更多人因此去学习CUE，就更利于我们事业的发展。因为我们的工作是部分基于CUE的，而这是一门并不大众化的配置语言。所以我也兴致勃然地参与了部分翻译工作。当又一次看到这个故事的时候，我才意识到我就是故事里跟风的村民，不是说村民的工作没有意义，只是如果能总是“充当团队的催化剂”，主动完成启动杂役，我们就总能掌握主动，推动更多人完成工作。
+调试 如果程序存在Bug，修复他而不是指责
 作为一篇读书笔记，未完。</description></item><item><title>从例子聊聊vim的替换指令</title><link>https://example.com/posts/vim-substitude/</link><pubDate>Tue, 26 Jan 2021 22:49:00 +0000</pubDate><guid>https://example.com/posts/vim-substitude/</guid><description>这两日实习期间，要做三个X功能下的子功能，在X功能下已经有F1~Fn，n个子功能，其中间相似度很高，所以新添加三个子功能的工作基本是复制粘贴，但是每个功能有其若干关键词不同。实现这三个功能由我和一位带我的同事共同完成，但是由于vim的替换功能之给力，让我倒是提前完成了我的部分，跟leader说后，他又分配了我一部分，我还是提前半小时左右完成工作摸鱼等下班了。
 例如原来已有功能的是XXX，我们要添加的新功能关键词是YYY，那么我们要把其中一个函数从：UpdateXXXFoo改名为UpdateYYYFoo。
 涉及的改动大概有如下这两种：
