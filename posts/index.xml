@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Journeyman's Blog</title><link>https://example.com/posts/</link><description>Recent content in Blog on Journeyman's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>在vim和tmux之间无缝导航</title><link>https://example.com/posts/tmux_vim_navigate/</link><pubDate>Sun, 13 Mar 2022 18:26:26 +0800</pubDate><guid>https://example.com/posts/tmux_vim_navigate/</guid><description>我的工作流中会同时使用Vim（Neovim）和tmux来完成代码的“编写、运行、修改“这个循环，有时会开启多个tmux窗格和vim窗口。这篇文章介绍我最近发现的如何在这二者窗格之间无缝切换。
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on Journeyman's Blog</title><link>https://example.com/posts/</link><description>Recent content in Blog on Journeyman's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 29 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>如何写技术文章 - Part 1</title><link>https://example.com/posts/how-to-write-tech-artical/</link><pubDate>Sun, 20 Mar 2022 13:35:20 +0800</pubDate><guid>https://example.com/posts/how-to-write-tech-artical/</guid><description>如何给写一篇技术文档？Google 给出了一个 教程。本文是一篇笔记。
+本文的目标 快速预览这个教程的重要观点 在总结中学习 非本文的目标 提供更多例子和练习 针对某个项目的技术文档做解读 遣词 定义术语要注意 不要重复定义，可以link到前面到定义
+如果定义很多，把他们收集到一个目录里
+不要中间变换写法
+使用缩写要先解释，不要在全拼和缩写里面来回横跳，不要给缩写使用几次的术语，定义术语要满足
+缩写明显更短 文章中出现很多次 使用代词 永远在名词后使用指代他的代词 名词和他的代指之间超过五个词，还是再用一次名词吧 如果名词和代指之间还有其他名词，还是再用一次名词吧 造句 尽量使用主动语态 被动语态既没有让事情更客观，有时候也完全省略了动作的发出者，让人产生更多疑惑。
+造句要注意 让句子清楚
+使用确定的动词，避免happen，occur，be动词（is are等）。 去掉 There is/are。 最小化使用形容词和副词，不要搞的和销售材料一样。 让句子更短
+短句更有易读，好维护。这对文章来说也是一样的。 一个句子只表达一个意思。 把长句变成列表。留意句子里的分号和or。 去掉无用的词。 is able to 直接替换成 can 就得了</description></item><item><title>在vim和tmux之间无缝导航</title><link>https://example.com/posts/tmux_vim_navigate/</link><pubDate>Sun, 13 Mar 2022 18:26:26 +0800</pubDate><guid>https://example.com/posts/tmux_vim_navigate/</guid><description>我的工作流中会同时使用Vim（Neovim）和tmux来完成代码的“编写、运行、修改“这个循环，有时会开启多个tmux窗格和vim窗口。这篇文章介绍我最近发现的如何在这二者窗格之间无缝切换。
 Vim 我会在vim中开启多个窗口完成代码编辑工作，例如在另一个窗口中参考API或者是两个有关系的代码块在两个buffer中。我使用&amp;lt;Leader&amp;gt;h/j/k/l 来在vim中切换多个窗口。我的&amp;lt;Leader&amp;gt;为空格键。
 在上图中，我使用&amp;lt;Leader&amp;gt;j和&amp;lt;Leader&amp;gt;k从上下两个窗口切换。
 tmux 虽然各类浮动或靠边的终端已经可以比较容易的运行在Neovim中，有时仍有其他需求让我需要使用tmux：例如
