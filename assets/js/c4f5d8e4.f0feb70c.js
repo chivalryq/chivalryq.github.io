@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkqiaos_pkm=self.webpackChunkqiaos_pkm||[]).push([[4195],{2841:(e,t,s)=>{s.r(t),s.d(t,{default:()=>r});var a=s(7294),n=s(6775);function r(){return a.createElement(n.l_,{to:"/docs/intro"})}}}]);
